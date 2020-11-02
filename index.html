@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gwendraeth Valley Tarmac</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <header class="clearfix">
+      <div class="headerContainer">
+        <div class="header-left">
+          <img src="TransparentLogoGwendraethValley.png" class="logo" />
+        </div>
+        <div class="header-right">
+          <label for="open">
+            <span class="hidden-desktop"></span>
+          </label>
+          <input type="checkbox" name="" id="open" />
+          <nav>
+            <a href="index.html">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Gallery</a>
+            <a href="#">Contact Us</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+  <main class="landing">
+      <section class="landing-shade d-flex flex-center-content text-center">
+        <div class="landing-text anim-fade-down">
+          <h1>Gwendraeth Valley tarmacadam</h1>
+          <p>
+           Experienced tarmac layers in Carmarthenshire
+          </p>
+             <a id="landing-button" href="ContactUS.html" class="button opac-0">Contact Us</a>
+        </div>
+      </section>
+    </main>
+       <script>
+      // Button delay js
+      const button = document.getElementById("landing-button");
+      setTimeout(() => {
+        addAndRemoveClass(button, "opac-1", "opac-0");
+      }, 800);
+    </script>
+    <script>
+      // nav state
+      var showMobileNav = false;
+      var navToggleBtn = document.getElementById("nav-toggle");
+      // Get the navigation div
+      var nav = document.getElementById("nav-items");
+      // get an array of the navigation divs children
+      var navItems = nav.children;
+
+      drawNavIcon(); // This changes the nav icon depending on the state of the nav
+
+      navToggleBtn.addEventListener("click", (ev) => {
+        // this is called a tenary operator. you can google the meaning and usage
+        showMobileNav ? addAndRemoveClass(nav, "hide", "show") : addAndRemoveClass(nav, "show", "hide");
+
+        // this changes the state of the nav
+        showMobileNav = !showMobileNav;
+        drawNavIcon();
+      });
+
+      // loop through children of navigation div
+      for (let i = 0; i < navItems.length; i++) {
+        let el = navItems[i];
+        // the mouseenter event is triggered when the mouse hovers on an element
+        el.addEventListener("mouseenter", (e) => {
+          addClassToSpan(e, ["hover"], []);
+        });
+
+        // the mouseleave event fires when the mouse leaves an element
+        el.addEventListener("mouseleave", (e) => {
+          addClassToSpan(e, [], ["hover"]);
+        });
+      }
+
+      // add and remove an array of css classes to an event target
+      function addClassToSpan(ev, addStr, remStr) {
+        // element is the event target in this case the <a> HOME <span class="underline"></span> </a>
+        const element = ev.target;
+
+        // get the first child of the event target in this case is <span class="underline"></span>
+        const span = element.children[0];
+        if (span) {
+          // remove the provided css class
+          span.classList.remove(...remStr);
+          // add the provided css class
+          span.classList.add(...addStr);
+        }
+      }
+
+      function addAndRemoveClass(el, addCl, removecl) {
+        el.classList.remove(removecl);
+        el.classList.add(addCl);
+      }
+
+      function drawNavIcon() {
+        // this is another tenary operator
+        navToggleBtn.innerHTML = showMobileNav
+          ? `<svg height="30px" viewBox="0 0 400 400" width="30px"><path fill="white" d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0"/></svg>`
+          : `<svg height="30px" viewBox="0 -53 384 384" width="30px"><path fill="white" d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/><path fill="white" d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/><path fill="white" d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>`;
+      }
+    </script>
+      <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-lg-3 first-column">
+          <h2>Welcome to Gwendraeth Valley Tarmacadam</h2>
+        </div>
+        <div class="col-md-8 col-lg-9 second-column">
+          <p>
+         With over 35 years' experience in the trade, Gwendraeth Valley Tarmacadam are a well-established provider of tarmacadam and resurfacing services to both domestic and commercial clients. From private driveways and paths to public road resurfacing and maintenance, we undertake all types of tarmacing work. We can also hire out paver and roller machinery. 
+            </p>
+        </div>
+      </div>
+    </div>
+       <div class="container responsive">
+      <div class="grid">
+        <div class="cell">
+          <img src="https://www.constrofacilitator.com/wp-content/uploads/2020/02/Road-Roller.jpg" class="responsive-image" alt="Using a Road Roller to make the newly laid tarmac smooth"/>
+          <h4 class="cell-heading">Local authority approved</h4>
+          <p class="cell-text">We are local authority approved contractors, and certified to supply and lay thin layers of asphalt and tarmacadam.</p>
+        </div>
+        <div class="cell">
+          <img src="https://i2.wp.com/cityx.co.uk/wp-content/uploads/2018/09/Resurfacing_work.jpg?fit=1860%2C1046&ssl=1" class="responsive-image" alt="Using a machine to make the tarmac smooth" />
+         <h4 class="cell-heading">24/7 services</h4>
+          <p class="cell-text">We are open 24/7, which means you can rely on us to respond to your queries or serve you at any time of the day or night. Do not hesitate to call us to inquire about our services.</p>
+        </div>
+        <div class="cell">
+          <img src="https://ak.picdn.net/shutterstock/videos/7246792/thumb/1.jpg" class="responsive-image"  alt="Maintenance working undertaking by using a jackhammer to tear up pieces in the road"/>
+           <h4 class="cell-heading">Why choose us?</h4>
+          <p class="cell-text">We have many benefits of why you should chose us?. As we have fully trained and qualified staff, Constructionline registered, Road Haulage Association member and Environment Agency approved.
+             </p>
+        </div>
+      </div>
+    </div>
+     <footer class="mainfooter" role="contentinfo">
+      <div class="footer-middle">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+              <!--Column1-->
+              <div class="footer-pad">
+                <h3>Page Links</h3>
+                 <ul class="list-unstyled" style="font-size: 15px;">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="#">Services</a></li>
+                  <li><a href="#">Gallery</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <!--Column1-->
+              <div class="footer-pad">
+                <h3>Address</h3>
+                <ul class="list-unstyled" style="font-size: 15px;">
+                  <li>Gwendraeth Valley Tarmacadam</li>
+                  <li>Ffrwd Vale Garage</li>
+                  <li>Pontyates</li>
+                  <li>Llanelli</li>
+                  <li>SA15 5UF</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <!--Column1-->
+              <div class="footer-pad">
+                <h3>Get In Touch</h3>
+                <ul class="list-unstyled" style="font-size: 15px">
+                  <a class="contact" href="tel:01269860496"> Telephone : 01269860496</a>
+                  <br />
+                  <a class="contact" href="tel:07831415799"> Mobile : 07831415799</a>
+                  <br />
+                  <p>
+                    <a  class="contact" href=" mailto:gvtarmac@btconnect.com" style="margin-left: -18px;">
+                      E-mail : gvtarmac@<br />
+                      btconnect.com
+                    </a>
+                  </p>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <h3>Follow Us</h3>
+              <ul class="social-network social-circle">
+                <li>
+                  <a href="https://www.facebook.com/pg/gwendraeth/photos/?tab=album&album_id=2894807277207317" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-12 copy">
+              <p class="text-center">Gwendraeth Valley Tarmacadam &copy; | Developed by <a href="https://okbdesign04.co.uk/">OKB Design</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
